@@ -17,7 +17,7 @@
                     <div class="ui segment metrixir">
                         <h1 class="ui aligned header teal">お申込み情報</h1>
 
-                        <form class="ui form" method="post" action="/cardOrder/">
+                        <form class="ui form" method="post" action="/cardOrder/confirm">
 
                             <!-- /*エラーがあれば表示する*/ -->
                             <ul class="ui red basic label" th:if="${form.hasErrors()}">
@@ -87,6 +87,7 @@
                                 <input type="text" class="number" name="employeeLength" th:value="${form.employeeLength}"/><span class="unit">年</span >
                             </div>
 
+
                             <!--/*"ご本人"の入力値を引き回すための隠し項目*/-->
                             <input type="hidden" name="kanjiName" th:value="${form.kanjiName}"/>
                             <input type="hidden" name="kanaName" th:value="${form.kanaName}"/>
@@ -110,7 +111,7 @@
                                     <button class="ui button angle left icon" onclick="form.action='/cardOrder/modify';return true">戻る</button>
                                 </div>
                                 <div class="eight wide column right aligned">
-                                    <button class="ui teal button angle right icon">カードを申し込む</button>
+                                    <button class="ui teal button angle right icon">確認画面へ</button>
                                 </div>
                             </div>
                         </form>

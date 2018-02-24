@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<head>
+    <title>確認画面</title>
+</head>
+<body>
+<div class="full height image" layout:fragment="content">
+    <div class="ui main container">
+        <div class="ui information container">
+            <div class="ui middle center aligned grid">
+                <div class="center column">
+                    <h1 class="ui aligned header teal">入力情報確認</h1>
+
+                    <form class="ui form" method="post" action="/contactUs/">
+                        <label>タイトル</label>
+                        <p th:text="${form.title}"></p>
+                        <input type="hidden" name="title" th:value="${form.title}"/>
+
+                        <label>お客様メールアドレス</label>
+                        <p th:text="${form.mail}"></p>
+                        <input type="hidden" name="mail" th:value="${form.mail}"/>
+
+                        <label>内容</label>
+                        <p th:text="${form.content}">登録なし</p>
+                        <input type="hidden" name="content" th:value="${form.content}"/>
+
+                        <label>お問い合わせ種別</label>
+                        <p th:text="${form.genre}"></p>
+                        <input type="hidden" name="genre" th:value="${form.genre}"/>
+
+
+                        <div class="ui column grid">
+                            <div class="eight wide column left aligned">
+                                <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
+                                <button class="ui button angle left icon"
+                                        onclick="form.action='/contacts/modify';return true">戻る
+                                </button>
+                            </div>
+                            <div class="eight wide column right aligned">
+                                <button class="ui teal button angle right icon">送信する</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

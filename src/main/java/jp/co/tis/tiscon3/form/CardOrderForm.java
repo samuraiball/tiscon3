@@ -112,4 +112,6 @@ public class CardOrderForm extends FormBase {
     @Pattern(regexp = "[0-9]*")
     private String employeeLength;
 
+    private boolean flag;
+
 }

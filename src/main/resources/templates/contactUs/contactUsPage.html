@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>お問い合わせページ</title>
+
+</head>
+<body>
+<div class="full height image" layout:fragment="content">
+    <div class="ui main container">
+        <div class="ui middle center aligned grid">
+            <div class="center column">
+                <div class="ui segment metrixir">
+                    <h1 class="ui aligned header teal">お問い合わせ</h1>
+                    <form class="ui form" method="post" action="/contacts/confirm">
+
+
+                        <div class="field" th:classappend="${form.hasErrors('title')} ? 'error'">
+                            <label>タイトル</label>
+                            <input type="text" name="title" th:value="${form.title}">
+                        </div>
+
+                         <div class="field" th:classappend="${form.hasErrors('mail')} ? 'error'">
+                            <label>お客様メールアドレス</label>
+                            <input type="text" name="mail" th:value="${form.mail}">
+                        </div>
+
+
+                        <div class="field" th:classappend="${form.hasErrors('content')} ? 'error'">
+                            <label>内容</label>
+                            <textarea name="content"></textarea>
+                        </div>
+
+                        <div class="field" th:classappend="${form.hasErrors('genre')} ? 'error'">
+                            <label>問い合わせ種別</label>
+                            <div class="col-md-3">
+                                <select id="genre" name="genre">
+                                    <option name="genre" th:value="カードについて" th:selected="'カード発行について'== ${form.genre}"
+                                            th:inline="text">カード発行について
+                                    </option>
+                                    <option name="genre" th:value="${form.genre}"
+                                            th:selected="'ローンについて'== ${form.genre}"
+                                            th:inline="text">ローンについて
+                                    </option>
+                                    <option th:value="その他" name="genre" th:selected="'その他' == ${form.genre}"
+                                            th:inline="text">その他
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="eight wide column right aligned">
+                            <button class="ui teal button angle right icon">確認画面へ</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </divc>
+    </div>
+</body>
+</html>

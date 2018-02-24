@@ -6,6 +6,8 @@ import enkan.endpoint.ResourceEndpoint;
 import enkan.middleware.*;
 import enkan.middleware.devel.*;
 import enkan.middleware.doma2.DomaTransactionMiddleware;
+import jp.co.tis.tiscon3.controller.ContactUsController;
+import jp.co.tis.tiscon3.entity.ContactUs;
 import kotowari.middleware.*;
 import kotowari.middleware.serdes.ToStringBodyWriter;
 import enkan.system.inject.ComponentInjector;
@@ -26,8 +28,16 @@ public class ApplicationConfiguration implements enkan.config.ApplicationFactory
             r.get("/cardOrder/user").to(CardOrderController.class, "inputUser");
             r.post("/cardOrder/user").to(CardOrderController.class, "inputJob");
             r.post("/cardOrder/modify").to(CardOrderController.class, "modifyUser");
+            r.post("/cardOrder/modifyB").to(CardOrderController.class,"modifyB");
             r.get("/cardOrder/completed").to(CardOrderController.class, "completed");
+            r.post("/cardOrder/confirm").to(CardOrderController.class, "confirm");
             r.resource(CardOrderController.class);
+
+            r.get("/contacts").to(ContactUsController.class,"contactUs");
+            r.post("/contacts/confirm").to(ContactUsController.class,"confirm");
+            r.post("/contacts/modify").to(ContactUsController.class,"modify");
+            r.get("/contacts/completed").to(ContactUsController.class,"completed");
+            r.resource(ContactUsController.class);
         }).compile();
 
         app.use(new DefaultCharsetMiddleware());

@@ -22,6 +22,7 @@
         <logback.version>1.2.3</logback.version>
         <h2.version>1.4.196</h2.version>
         <lombok.version>1.16.18</lombok.version>
+        <java-mail.version>1.5.4</java-mail.version>
     </properties>
 
     <build>
@@ -108,6 +109,13 @@
             <artifactId>thymeleaf-layout-dialect</artifactId>
             <version>2.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${java-mail.version}</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

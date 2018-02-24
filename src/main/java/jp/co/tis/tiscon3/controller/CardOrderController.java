@@ -53,8 +53,11 @@ public class CardOrderController {
      * @return お勤め先登録ページresponse
      */
     public HttpResponse inputJob(CardOrderForm form) {
-        // エラーを出したくないので強制的にエラーを消す.
-        form.setErrors(null);
+
+
+        if (form.hasErrors()==true) {
+            return templateEngine.render("cardOrder/user","form",form);
+        }
 
         return templateEngine.render("cardOrder/job", "form", form);
     }
@@ -71,10 +74,15 @@ public class CardOrderController {
         return templateEngine.render("cardOrder/user", "form", form);
     }
 
+
+    public HttpResponse modifyB(CardOrderForm form){
+        return templateEngine.render("cardOrder/job","form",form);
+    }
+
     /**
      * カード申し込み情報をDatabaseに登録します.
      *
-     * @return 完了ページへのリダイレクトresponse
+     * @return 完了ページへのリダイレクト
      */
     @Transactional
     public HttpResponse create(CardOrderForm form) {
@@ -87,6 +95,17 @@ public class CardOrderController {
 
         return redirect(getClass(), "completed", SEE_OTHER);
     }
+
+    /**
+     * 確認ページに遷移
+     *
+     * @return  確認ページ
+     */
+    public HttpResponse confirm(CardOrderForm form){
+        return templateEngine.render("cardOrder/confirm","form",form);
+    }
+
+
 
     /**
      * 完了ページを表示します.

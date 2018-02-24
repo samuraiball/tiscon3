@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/layout">
+<head>
+    <title>確認画面</title>
+</head>
+<body>
+<div class="full height image" layout:fragment="content">
+    <div class="ui main container">
+        <div class="ui information container">
+            <div class="ui middle center aligned grid">
+                <div class="center column">
+                    <h1 class="ui aligned header teal">入力情報確認</h1>
+
+                    <form class="ui form" method="post" action="/cardOrder/">1
+                        <label>お名前</label>
+                        <p th:text="${form.kanjiName}"></p>
+                        <input type="hidden" name="kanjiName" th:value="${form.kanjiName}"/>
+
+                        <label>お名前（カタカナ）</label>
+                        <p th:text="${form.kanaName}"></p>
+                        <input type="hidden" name="kanaName" th:value="${form.kanaName}"/>
+
+                        <label>お名前（アルファベット）</label>
+                        <p th:text="${form.alphabetName}"></p>
+                        <input type="hidden" name="alphabetName" th:value="${form.alphabetName}"/>
+
+                        <label>性別</label>
+                        <p th:text="${form.gender}"></p>
+                        <input type="hidden" name="gender" th:value="${form.gender}"/>
+
+                        <label>生年月日</label>
+                        <p th:text="${form.dateOfBirth}"></p>
+                        <input type="hidden" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
+
+                        <label>ご自宅郵便番号</label>>
+                        <p th:text="${form.zipCode}"></p>
+                        <input type="hidden" name="zipCode" th:value="${form.zipCode}"/>
+
+                        <label>ご自宅住所</label>
+                        <p th:text="${form.address}"></p>
+                        <input type="hidden" name="address" th:value="${form.address}"/>
+
+                        <label>自宅電話番号</label>
+                        <p th:text="${form.homePhoneNumber}"></p>
+                        <input type="hidden" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
+
+                        <label>携帯番号</label>
+                        <p th:text="${form.mobilePhoneNumber}">登録なし</p>
+                        <input type="hidden" name="mobilePhoneNumber" th:value="${form.mobilePhoneNumber}"/>
+
+                        <label>メールアドレス</label>
+                        <p th:text="${form.emailAddress}"></p>
+                        <input type="hidden" name="emailAddress" th:value="${form.emailAddress}"/>
+
+                        <label>わからん</label>
+                        <input type="hidden" name="spouse" th:value="${form.spouse}"/>
+
+                        <label>配偶者の有無</label>
+                        <input type="hidden" name="houseClassification" th:value="${form.houseClassification}"/>
+
+
+                        <label>借金</label>
+                        <p th:text="${form.debt}"></p>
+                        <input type="hidden" name="debt" th:value="${form.debt}"/>
+
+                        <label>年収</label>
+                        <p th:text="${form.income}"></p>
+                        <input type="hidden" name="income" th:value="${form.income}"/>
+
+                        <label>お仕事</label>
+                        <p th:text="${form.job}"></p>
+                        <input type="hidden" name="job" th:value="${form.job}"/>
+
+
+                        <input type="hidden" name="employerName" th:value="${form.employerName}"/>
+                        <input type="hidden" name="employerZipCode" th:value="${form.employerZipCode}"/>
+                        <input type="hidden" name="employerAddress" th:value="${form.employerAddress}"/>
+                        <input type="hidden" name="employerPhoneNumber" th:value="${form.employerPhoneNumber}"/>
+                        <input type="hidden" name="industryType" th:value="${form.industryType}"/>
+                        <input type="hidden" name="capital" th:value="${form.capital}"/>
+                        <input type="hidden" name="companySize" th:value="${form.companySize}"/>
+                        <input type="hidden" name="employeeLength" th:value="${form.employeeLength}"/>
+                        <input type="hidden" name="department" th:value="${form.department}"/>
+                        <input type="hidden" name="position" th:value="${form.position}"/>
+
+
+                        <div class="ui column grid">
+                            <div class="eight wide column center aligned">
+                                <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
+                                <button class="ui button angle centor icon"
+                                        onclick="form.action='/cardOrder/modify';return true">ユーザー情報入力に戻る
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <label>お勤め先名</label>
+                        <p th:text="${form.employerName}"></p>
+
+                        <label>お勤め先郵便番号</label>
+                        <p th:text="${form.employerZipCode}"></p>
+
+                        <label>お勤め先住所</label>
+                        <p th:text="${form.employerAddress}"></p>
+
+                        <label>お勤め先電話番号</label>
+                        <p th:text="${form.employerPhoneNumber}"></p>
+
+
+                        <label>業種</label>
+                        <p th:text="${idustryType}">
+
+                            <label>資本金</label>
+                        <p th:text="${form.capital}"></p>
+
+                        <label>お勤め先の規模（従業員数）</label>
+                        <p th:text="${form.companySize}"></p>
+
+                        <label>所属部署</label>
+                        <p th:text="${form.department}"></p>
+
+                        <label>役職</label>
+                        <p th:text="${form.position}"></p>
+
+                        <label>勤続年数</label>
+                        <p th:text="${form.employeeLength}"></p>年
+
+
+                        <!--/*"ご本人"の入力値を引き回すための隠し項目*/-->
+
+
+                        <div class="ui column grid">
+                            <div class="eight wide column left aligned">
+                                <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
+                                <button class="ui button angle left icon"
+                                        onclick="form.action='/cardOrder/modifyB';return true">お勤め先上表入力に戻る
+                                </button>
+                            </div>
+                            <div class="eight wide column right aligned">
+                                <button class="ui teal button angle right icon">カードを申し込む</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
